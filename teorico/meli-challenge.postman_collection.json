@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "34d017b9-be49-4c5c-ab3f-b49c810fa803",
+		"name": "meli-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5003/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "meli:getItems",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "APP_USR-5887808725832367-081117-84ca66774146dd4815eb8f7586dda633-419720911",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.mercadolibre.com/items?ids=MLA664384760,MLA750925229,MLA845041373,MLA693105237&attributes=id,site_id,price,start_time,category_id,currency_id,seller_id",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"items"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "MLA664384760,MLA750925229,MLA845041373,MLA693105237"
+						},
+						{
+							"key": "attributes",
+							"value": "id,site_id,price,start_time,category_id,currency_id,seller_id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "meli:getcategories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "APP_USR-5887808725832367-081110-5955140f47b42bd39427a95540cf72f3-419720911",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.mercadolibre.com/categories/MLA420226",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"categories",
+						"MLA420226"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "meli:getCurrency",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "APP_USR-5887808725832367-081110-5955140f47b42bd39427a95540cf72f3-419720911",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.mercadolibre.com/currencies/ARS",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"currencies",
+						"ARS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "meli:getUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "APP_USR-5887808725832367-081110-5955140f47b42bd39427a95540cf72f3-419720911",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.mercadolibre.com/users/78528152",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"users",
+						"78528152"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploadfile",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://localhost:5003/uploadfile/?separator=,&encode=UTF-8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"uploadfile",
+						""
+					],
+					"query": [
+						{
+							"key": "separator",
+							"value": ","
+						},
+						{
+							"key": "encode",
+							"value": "UTF-8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5003/product/?id=1050437834&site=MLB",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"product",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1050437834"
+						},
+						{
+							"key": "site",
+							"value": "MLB"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

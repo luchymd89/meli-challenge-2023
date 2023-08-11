@@ -1,0 +1,9 @@
+datetime
+gunicorn
+python-dotenv
+flask
+chardet
+requests
+
+
+

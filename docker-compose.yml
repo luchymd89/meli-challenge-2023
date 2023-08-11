@@ -1,0 +1,49 @@
+version: "2"
+
+services:
+  meli_mariabd_db:
+    build: "./db/mariadb"
+    networks:
+      - meli-lan
+    container_name: meli_mariadb_db
+    ports:
+      - "3310:3306"
+    #restart: always
+    #healthcheck:
+    #  test: "/usr/bin/mysql --user=${MARIADB_USER} --password=${MARIADB_PASSWORD} --execute \"SHOW DATABASES;\""
+    #  interval: 3s
+    #  timeout: 1s
+    #  retries: 5
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: ${MARIADB_DATABASE_NAME}
+      MYSQL_USER: ${MARIADB_USER}
+      MYSQL_PASSWORD: ${MARIADB_PASSWORD} 
+    volumes:
+      # persist data files into `data_meli_mariadb` volume managed by docker
+      - data_meli_mariadb:/var/lib/mysql:rw
+      # bind-mount any sql files that should be run while initializing
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  meli_backend:
+    build:
+      context: ./
+      dockerfile: ./backend/Dockerfile
+    command: python -u app.py &
+    ports:
+      - "5003:5000"
+    networks:
+      - meli-lan
+    links:
+      - meli_mariabd_db
+    depends_on:
+      - meli_mariabd_db
+    container_name: meli_backend
+volumes:
+  data_meli_mariadb:
+networks:
+  meli-lan:
+    ipam:
+      config:
+        - subnet: 192.168.30.0/24
